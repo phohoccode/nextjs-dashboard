@@ -6,6 +6,11 @@ import { InvoicesTableSkeleton } from "@/app/ui/skeletons";
 import { Suspense } from "react";
 import { lusitana } from "@/app/ui/font";
 import { fetchInvoicesPages } from "@/app/lib/data";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Invoices",
+};
 
 // NextsJS cung cấp searchParams thông qua props chứa query và page
 export default async function Page(props: {
@@ -20,7 +25,6 @@ export default async function Page(props: {
   const currentPage = Number(searchParams?.page) || 1;
   const totalPages = await fetchInvoicesPages(query);
 
-  console.log(">>> searchParams", searchParams);
 
   return (
     <div className="w-full">
